@@ -1,8 +1,7 @@
 {
   "profiles": {
     "BibliTech.Roslyn.ViewModels.Terminal": {
-      "commandName": "Project",
-      "commandLineArgs": "\"D:\\Temp\\Data\\Classes\" \"D:\\Temp\\test.cs\""
+      "commandName": "Project"
     }
   }
 }
