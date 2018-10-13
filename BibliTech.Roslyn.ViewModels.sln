@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels.Test", "BibliTech.Roslyn.ViewModels.Test\BibliTech.Roslyn.ViewModels.Test.csproj", "{C2FFA0F4-31FF-453E-8821-84FDCBD6F939}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliTech.Roslyn.ViewModels.Terminal", "BibliTech.Roslyn.ViewModels.Terminal\BibliTech.Roslyn.ViewModels.Terminal.csproj", "{4FB3993A-EFF2-45DA-B5B6-913958E633DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels.Terminal", "BibliTech.Roslyn.ViewModels.Terminal\BibliTech.Roslyn.ViewModels.Terminal.csproj", "{4FB3993A-EFF2-45DA-B5B6-913958E633DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
