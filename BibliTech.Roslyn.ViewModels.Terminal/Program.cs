@@ -1,5 +1,7 @@
 ﻿using BibliTech.Roslyn.ViewModels.Common;
+using McMaster.Extensions.CommandLineUtils;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace BibliTech.Roslyn.ViewModels.Terminal
@@ -9,32 +11,13 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
 
         public static void Main(string[] args)
         {
-            string inputFolder;
-            string outputFile;
+            var commandLineApp = new CommandLineApplication();
 
-            if (args.Length == 0)
-            {
-                Console.Write("Enter folder path: ");
-                inputFolder = Console.ReadLine();
-            }
-            else
-            {
-                inputFolder = args[0];
-            }
+            commandLineApp.HelpOption("-? | -h | --help");
 
-            if (args.Length < 2)
-            {
-                Console.Write("Enter output file path: ");
-                outputFile = Console.ReadLine();
-            }
-            else
-            {
-                outputFile = args[1];
-            }
 
-            var parser = new EntityFolderParser(inputFolder);
-            var output = parser.ParseToString();
-            File.WriteAllText(outputFile, output);
+
+            commandLineApp.Execute(args);
         }
 
     }

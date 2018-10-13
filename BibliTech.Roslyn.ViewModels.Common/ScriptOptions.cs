@@ -9,26 +9,19 @@ namespace BibliTech.Roslyn.ViewModels.Common
 
     public class ScriptOptions
     {
+        public const int SpacesPerIndent = 4;
 
         public static readonly ScriptOptions Instance = new ScriptOptions();
 
-        public HashSet<string> IgnoredBaseClasses { get; set; }
-        public string ViewModelClassName { get; set; }
-        public string OutputNamespace { get; set; }
-        public int SpacesPerIndent { get; set; }
-        public string ViewModelDeclarationFormat { get; set; }
-        public bool AllowPredefinedType { get; set; }
-        public HashSet<string> AllowedTypes { get; set; }
-        public string PropertyDeclaration { get; set; }
-        public string FilePattern { get; set; }
-        public string NamespaceDeclarationFormat { get; set; }
+        public string ClassNameFormat { get; set; } = "{0}EntityViewModel";
+        public string Namespace { get; set; } = "ViewModels";
+        public bool NoPartial { get; set; } = false;
 
-        private ScriptOptions()
-        {
-            var optionsFileContent = File.ReadAllText("options.json");
-            JsonConvert.PopulateObject(optionsFileContent, this);
-        }
+        public string InputFolder { get; set; } = null;
+        public string OutputFile { get; set; } = null;
 
+        private ScriptOptions() { }
+        
     }
 
 }

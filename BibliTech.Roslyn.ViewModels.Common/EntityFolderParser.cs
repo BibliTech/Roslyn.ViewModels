@@ -22,17 +22,17 @@ namespace BibliTech.Roslyn.ViewModels.Common
             var result = new StringBuilder();
             var currentIndent = 0;
 
-            var shouldWriteNamespace = !string.IsNullOrEmpty(this.options.OutputNamespace);
+            var shouldWriteNamespace = !string.IsNullOrEmpty(this.options.Namespace);
             if (shouldWriteNamespace)
             {
-                result.AppendLine(string.Format(options.NamespaceDeclarationFormat, this.options.OutputNamespace));
+                result.AppendLine(string.Format("namespace {0}", this.options.Namespace));
                 result.AppendLine("{");
                 result.AppendLine();
 
                 currentIndent++;
             }
 
-            var files = Directory.GetFiles(this.folderPath, this.options.FilePattern);
+            var files = Directory.GetFiles(this.folderPath, "*.cs");
             foreach (var file in files)
             {
                 var parser = new EntityParser(file)

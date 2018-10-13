@@ -54,10 +54,4 @@
     <ProjectReference Include="..\BibliTech.Roslyn.ViewModels.Common\BibliTech.Roslyn.ViewModels.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="options.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

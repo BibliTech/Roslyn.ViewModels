@@ -9,7 +9,7 @@ using System.Text;
 namespace BibliTech.Roslyn.ViewModels.Common
 {
 
-    public class EntitySyntaxWalker : CSharpSyntaxWalker
+    public class EntityStringSyntaxWalker : CSharpSyntaxWalker
     {
 
         public int CurrentIndent { get; set; }
@@ -17,11 +17,11 @@ namespace BibliTech.Roslyn.ViewModels.Common
         StringBuilder result;
         ScriptOptions options;
         string indent;
-        public EntitySyntaxWalker()
+        public EntityStringSyntaxWalker()
         {
             this.result = new StringBuilder();
             this.options = ScriptOptions.Instance;
-            this.indent = new string(' ', this.options.SpacesPerIndent);
+            this.indent = new string(' ', ScriptOptions.SpacesPerIndent);
         }
 
         public override void VisitClassDeclaration(ClassDeclarationSyntax node)
@@ -37,10 +37,14 @@ namespace BibliTech.Roslyn.ViewModels.Common
         private void WriteViewModel(ClassDeclarationSyntax node)
         {
             var entityName = node.Identifier.ValueText;
-            var viewModelName = string.Format(this.options.ViewModelClassName, entityName);
+            var viewModelName = string.Format(this.options.ClassNameFormat, entityName);
 
             this.WriteIndent();
-            this.result.AppendLine(string.Format(this.options.ViewModelDeclarationFormat, viewModelName));
+            this.result.AppendLine(string.Format(
+                "public {2}class {0}",
+                viewModelName,
+                entityName,
+                this.options.NoPartial ? "" : "partial "));
 
             this.WriteIndent();
             this.result.AppendLine("{");
@@ -73,7 +77,7 @@ namespace BibliTech.Roslyn.ViewModels.Common
                 var propertyName = node.Identifier;
 
                 this.WriteIndent();
-                this.result.AppendLine(string.Format(options.PropertyDeclaration,
+                this.result.AppendLine(string.Format("public {0} {1} {{ get; set; }}",
                     propertyTypeName, propertyName));
             }
         }
@@ -82,18 +86,7 @@ namespace BibliTech.Roslyn.ViewModels.Common
         {
             var propertyType = node.Type;
 
-            if (this.options.AllowPredefinedType && propertyType is PredefinedTypeSyntax)
-            {
-                return true;
-            }
-
-            var name = propertyType.ToString();
-            if (this.options.AllowedTypes != null && this.options.AllowedTypes.Contains(name))
-            {
-                return true;
-            }
-
-            return false;
+            return propertyType is PredefinedTypeSyntax;
         }
 
         private bool ShouldIgnore(ClassDeclarationSyntax node)
@@ -104,7 +97,7 @@ namespace BibliTech.Roslyn.ViewModels.Common
                 {
                     var name = baseType.Type.TryGetInferredMemberName();
 
-                    if (this.options.IgnoredBaseClasses.Contains(name))
+                    if (name.Equals("dbcontext", StringComparison.OrdinalIgnoreCase))
                     {
                         return true;
                     }

@@ -13,6 +13,8 @@ namespace BibliTech.Roslyn.ViewModels.Test
         [Fact]
         public void ParseToStringTest()
         {
+            ScriptOptions.Instance.NoPartial = true;
+
             var folderPath = Utils.DataClassesFolder;
             var parser = new EntityFolderParser(folderPath);
             var result = parser.ParseToString();

@@ -25,7 +25,7 @@ namespace BibliTech.Roslyn.ViewModels.Common
             var tree = CSharpSyntaxTree.ParseText(input);
             var root = tree.GetRoot() as CompilationUnitSyntax;
 
-            var walker = new EntitySyntaxWalker()
+            var walker = new EntityStringSyntaxWalker()
             {
                 CurrentIndent = this.InitialIndent,
             };
