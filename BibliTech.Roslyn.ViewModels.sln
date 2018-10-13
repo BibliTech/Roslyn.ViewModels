@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels.Terminal", "BibliTech.Roslyn.ViewModels.Terminal\BibliTech.Roslyn.ViewModels.Terminal.csproj", "{4FB3993A-EFF2-45DA-B5B6-913958E633DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliTech.Roslyn.ViewModels.Demo", "BibliTech.Roslyn.ViewModels.Demo\BibliTech.Roslyn.ViewModels.Demo.csproj", "{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4FB3993A-EFF2-45DA-B5B6-913958E633DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FB3993A-EFF2-45DA-B5B6-913958E633DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB3993A-EFF2-45DA-B5B6-913958E633DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

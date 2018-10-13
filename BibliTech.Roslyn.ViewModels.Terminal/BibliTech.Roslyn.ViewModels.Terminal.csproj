@@ -3,14 +3,38 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>View Models Roslyn Generator</AssemblyName>
+    <AssemblyName>dotnet-viewmodel</AssemblyName>
     <Authors>Luke Vo</Authors>
     <Company>BibliTech</Company>
     <Product>View Models Roslyn Generator</Product>
+    <Description>A small utility for creating View Model classes for Entity classes.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>2018 BibliTech</Copyright>
+    <PackageLicenseUrl>https://github.com/BibliTech/Roslyn.ViewModels/blob/master/LICENSE.MD</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/BibliTech/Roslyn.ViewModels</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BibliTech/Roslyn.ViewModels</RepositoryUrl>
+    <PackageTags>roslyn viewmodel entity model</PackageTags>
+    <PackageReleaseNotes>https://github.com/BibliTech/Roslyn.ViewModels/releases</PackageReleaseNotes>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BibliTech.Roslyn.ViewModels.Common\BibliTech.Roslyn.ViewModels.Common.csproj" />
+    <Compile Include="..\BibliTech.Roslyn.ViewModels.Common\EntityFolderParser.cs" Link="CommonLink\EntityFolderParser.cs" />
+    <Compile Include="..\BibliTech.Roslyn.ViewModels.Common\EntityParser.cs" Link="CommonLink\EntityParser.cs" />
+    <Compile Include="..\BibliTech.Roslyn.ViewModels.Common\EntityStringSyntaxWalker.cs" Link="CommonLink\EntityStringSyntaxWalker.cs" />
+    <Compile Include="..\BibliTech.Roslyn.ViewModels.Common\ScriptOptions.cs" Link="CommonLink\ScriptOptions.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CommonLink\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.5" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+  
 </Project>
