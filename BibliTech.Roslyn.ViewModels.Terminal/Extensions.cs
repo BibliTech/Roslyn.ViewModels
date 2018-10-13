@@ -7,20 +7,12 @@ namespace McMaster.Extensions.CommandLineUtils
     internal static class Extensions
     {
 
-        public static void OptionalOption(this CommandLineApplication commandLineApp,
-            string template, string description, CommandOptionType optionType, Action<CommandOption> configuration)
+        public static void ExecuteOptional(this CommandOption option, Action<CommandOption> action)
         {
-            commandLineApp.Option(
-                template,
-                description,
-                optionType,
-                (option) =>
-                {
-                    if (option.HasValue())
-                    {
-                        configuration(option);
-                    }
-                });
+            if (option.HasValue())
+            {
+                action(option);
+            }
         }
 
     }

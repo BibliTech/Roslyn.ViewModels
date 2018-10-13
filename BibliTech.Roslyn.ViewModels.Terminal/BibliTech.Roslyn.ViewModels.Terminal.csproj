@@ -10,10 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BibliTech.Roslyn.ViewModels.Common\BibliTech.Roslyn.ViewModels.Common.csproj" />
   </ItemGroup>
 

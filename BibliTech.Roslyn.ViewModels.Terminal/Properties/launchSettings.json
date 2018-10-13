@@ -2,7 +2,7 @@
   "profiles": {
     "BibliTech.Roslyn.ViewModels.Terminal": {
       "commandName": "Project",
-      "commandLineArgs": "\"D:\\Personal\\BibliTech\\Utilities\\BibliTech.Roslyn.ViewModels\\BibliTech.Roslyn.ViewModels.Test\\Data\\Classes\" \"D:\\Temp\\ViewModel.cs\""
+      "commandLineArgs": "\"D:\\Personal\\BibliTech\\Utilities\\BibliTech.Roslyn.ViewModels\\BibliTech.Roslyn.ViewModels.Test\\Data\\Classes\" \"D:\\Temp\\ViewModel.cs\" -ns \"BibliTech.ViewModels\" -np -c \"{0}ViewModel\""
     }
   }
 }
