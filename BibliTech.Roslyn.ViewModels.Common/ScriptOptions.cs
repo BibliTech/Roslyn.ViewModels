@@ -17,6 +17,9 @@ namespace BibliTech.Roslyn.ViewModels.Common
         public string Namespace { get; set; } = "ViewModels";
         public bool NoPartial { get; set; } = false;
 
+        public string ClassAttribute { get; set; } = null;
+        public string Bases { get; set; } = null;
+
         public string InputFolder { get; set; } = null;
         public string OutputFile { get; set; } = null;
 

@@ -34,6 +34,16 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
                 "Namespace for the output file. Default: False",
                 CommandOptionType.NoValue);
 
+            var optClassAttribute = app.Option(
+                "-attr|--ClassAttribute <string>",
+                "Append Class attribute string before every Class declaration",
+                CommandOptionType.SingleValue);
+
+            var optBases = app.Option(
+                "-bases|--Bases <string>",
+                "Append inheritance members in every Class declaration",
+                CommandOptionType.SingleValue);
+
             app.OnExecute(() =>
             {
                 var scriptOptions = ScriptOptions.Instance;
@@ -41,6 +51,8 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
                 optClassNameFormat.ExecuteOptional(o => scriptOptions.ClassNameFormat = o.Value());
                 optNamespace.ExecuteOptional(o => scriptOptions.Namespace = o.Value());
                 optNoPartial.ExecuteOptional(o => scriptOptions.NoPartial = true);
+                optClassAttribute.ExecuteOptional(o => scriptOptions.ClassAttribute = o.Value());
+                optBases.ExecuteOptional(o => scriptOptions.Bases = o.Value());
 
                 var parser = new EntityFolderParser(argInput.Value);
                 var result = parser.ParseToString();

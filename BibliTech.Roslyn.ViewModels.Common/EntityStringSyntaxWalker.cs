@@ -39,18 +39,36 @@ namespace BibliTech.Roslyn.ViewModels.Common
             var entityName = node.Identifier.ValueText;
             var viewModelName = string.Format(this.options.ClassNameFormat, entityName);
 
+            // Attributes if there is
+            if (!string.IsNullOrEmpty(this.options.ClassAttribute))
+            {
+                this.WriteIndent();
+                this.result.AppendLine($"[{this.options.ClassAttribute}]");
+            }
+
+            // Class declaration
             this.WriteIndent();
-            this.result.AppendLine(string.Format(
+
+            var classDecLine = string.Format(
                 "public {2}class {0}",
                 viewModelName,
                 entityName,
-                this.options.NoPartial ? "" : "partial "));
+                this.options.NoPartial ? "" : "partial ");
 
+            if (!string.IsNullOrEmpty(this.options.Bases))
+            {
+                classDecLine += " : " + this.options.Bases;
+            }
+
+            this.result.AppendLine(classDecLine);
+
+            // Class start
             this.WriteIndent();
             this.result.AppendLine("{");
 
             this.CurrentIndent++;
 
+            // Class members
             foreach (var member in node.Members)
             {
                 if (member is PropertyDeclarationSyntax propertyMember)
@@ -61,11 +79,10 @@ namespace BibliTech.Roslyn.ViewModels.Common
 
             this.CurrentIndent--;
 
+            // Class End
             this.WriteIndent();
             this.result.AppendLine("}");
 
-
-            this.result.AppendLine();
             this.result.AppendLine();
         }
 
@@ -77,8 +94,10 @@ namespace BibliTech.Roslyn.ViewModels.Common
                 var propertyName = node.Identifier;
 
                 this.WriteIndent();
-                this.result.AppendLine(string.Format("public {0} {1} {{ get; set; }}",
-                    propertyTypeName, propertyName));
+
+                var propertyDecLine = string.Format("public {0} {1} {{ get; set; }}",
+                    propertyTypeName, propertyName);
+                this.result.AppendLine(propertyDecLine);
             }
         }
 
@@ -86,7 +105,10 @@ namespace BibliTech.Roslyn.ViewModels.Common
         {
             var propertyType = node.Type;
 
-            return propertyType is PredefinedTypeSyntax;
+            return
+                propertyType is PredefinedTypeSyntax ||
+                (propertyType is IdentifierNameSyntax nameSyntax && 
+                nameSyntax.Identifier.ToString() == "DateTime");
         }
 
         private bool ShouldIgnore(ClassDeclarationSyntax node)
