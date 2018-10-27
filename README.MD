@@ -23,9 +23,11 @@ To use the tool for the current project only, open your `.csproj` file with any 
 
 ```
 <ItemGroup>
-    <DotNetCliToolReference Include="dotnet-viewmodel" Version="1.0.3" />
+    <DotNetCliToolReference Include="dotnet-viewmodel" Version="1.0.4" />
 </ItemGroup>
 ```
+
+Note: please always check for newest version of the tool. Sometimes I may forget to update the version number in this README file.
 
 To make sure it works, please try running `dotnet restore` or `dotnet build` afterwards (you don't need to run any nuget install).
 
