@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels.Terminal", "BibliTech.Roslyn.ViewModels.Terminal\BibliTech.Roslyn.ViewModels.Terminal.csproj", "{4FB3993A-EFF2-45DA-B5B6-913958E633DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliTech.Roslyn.ViewModels.Demo", "BibliTech.Roslyn.ViewModels.Demo\BibliTech.Roslyn.ViewModels.Demo.csproj", "{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliTech.Roslyn.ViewModels.Demo", "BibliTech.Roslyn.ViewModels.Demo\BibliTech.Roslyn.ViewModels.Demo.csproj", "{51B5ADC6-FC37-44E9-B24A-944ACA638CDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A76E16A4-00A7-4CE7-BB71-DEBD6FD7A20F}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.MD = LICENSE.MD
+		README.MD = README.MD
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

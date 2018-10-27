@@ -52,7 +52,7 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
             var optUsings = app.Option(
                 "-u|--Using",
                 "Declare using namespaces. System is included by default.",
-                CommandOptionType.NoValue);
+                CommandOptionType.MultipleValue);
 
             app.OnExecute(() =>
             {
