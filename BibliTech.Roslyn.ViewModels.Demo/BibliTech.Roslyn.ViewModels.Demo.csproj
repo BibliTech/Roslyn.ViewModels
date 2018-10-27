@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="dotnet-viewmodel" Version="1.0.1" />
+    <DotNetCliToolReference Include="dotnet-viewmodel" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

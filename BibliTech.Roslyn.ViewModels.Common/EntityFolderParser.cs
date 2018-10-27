@@ -22,6 +22,13 @@ namespace BibliTech.Roslyn.ViewModels.Common
             var result = new StringBuilder();
             var currentIndent = 0;
 
+            // Using directives
+            foreach (var ns in this.options.UsingDirectives)
+            {
+                result.AppendLine($"using {ns};");
+            }
+            result.AppendLine();
+
             var shouldWriteNamespace = !string.IsNullOrEmpty(this.options.Namespace);
             if (shouldWriteNamespace)
             {

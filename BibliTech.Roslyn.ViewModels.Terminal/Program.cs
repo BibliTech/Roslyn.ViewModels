@@ -31,7 +31,7 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
 
             var optNoPartial = app.Option(
                 "-np|--NoPartial",
-                "Namespace for the output file. Default: False",
+                "Do not add the partial directive to the class declaration. Default: False",
                 CommandOptionType.NoValue);
 
             var optClassAttribute = app.Option(
@@ -44,6 +44,16 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
                 "Append inheritance members in every Class declaration",
                 CommandOptionType.SingleValue);
 
+            var optForce = app.Option(
+                "-f|--Force",
+                "Allow overwrite output file if it already exists",
+                CommandOptionType.NoValue);
+
+            var optUsings = app.Option(
+                "-u|--Using",
+                "Declare using namespaces. System is included by default.",
+                CommandOptionType.NoValue);
+
             app.OnExecute(() =>
             {
                 var scriptOptions = ScriptOptions.Instance;
@@ -53,6 +63,14 @@ namespace BibliTech.Roslyn.ViewModels.Terminal
                 optNoPartial.ExecuteOptional(o => scriptOptions.NoPartial = true);
                 optClassAttribute.ExecuteOptional(o => scriptOptions.ClassAttribute = o.Value());
                 optBases.ExecuteOptional(o => scriptOptions.Bases = o.Value());
+                optForce.ExecuteOptional(o => scriptOptions.Force = true);
+                optUsings.ExecuteOptional(o => scriptOptions.UsingDirectives.AddRange(o.Values));
+                
+                if (File.Exists(argOutput.Value) && !scriptOptions.Force)
+                {
+                    Console.WriteLine("Output file already exist. Please use -f or --Force to overwrite.");
+                    return;
+                }
 
                 var parser = new EntityFolderParser(argInput.Value);
                 var result = parser.ParseToString();

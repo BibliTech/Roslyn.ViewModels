@@ -16,6 +16,7 @@ namespace BibliTech.Roslyn.ViewModels.Test
             ScriptOptions.Instance.NoPartial = true;
             ScriptOptions.Instance.ClassAttribute = "EntityViewModel";
             ScriptOptions.Instance.Bases = "IEntityViewModel";
+            ScriptOptions.Instance.Force = false;
 
             var folderPath = Utils.DataClassesFolder;
             var parser = new EntityFolderParser(folderPath);

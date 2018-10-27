@@ -1,1 +1,1 @@
-﻿dotnet viewmodel Entities ViewModels\EntityViewModels.cs
+﻿dotnet viewmodel Entities ViewModels\EntityViewModels.cs -c "{0}ViewModel" -ns "BibliTech.Demo.ViewModels" -attr "ViewModel, EntityViewModel" -bases "BaseViewModel, IViewModel" -u "BibliTech" -u "BibliTech.Roslyn.ViewModels.Demo" -f
